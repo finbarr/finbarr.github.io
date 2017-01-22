@@ -2,247 +2,118 @@
 <html>
   <head>
     <title>Finbarr Taylor</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/squall.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Merriweather:400italic,400,700,700italic" rel="stylesheet">
-    <link href="/images/favicon.ico" rel="shortcut icon">
-    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css" rel="stylesheet">
+    <link href="images/favicon.ico" rel="shortcut icon">
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fixed">
-        <div class="navbar-header">
-          <button class="button navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Finbarr</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right" id="scroll">
-            <li>
-              <a href="#work">Work</a>
-            </li>
-            <li>
-              <a href="#projects">Projects</a>
-            </li>
-            <li>
-              <a href="#contact">Contact</a>
-            </li>
-          </ul>
+    <div class="ui text container">
+      <div class="ui segment basic padded right aligned">
+        <div class="ui horizontal bulleted list">
+          <a class="item" href="#work">Work</a>
+          <a class="item" href="#projects">Projects</a>
+          <a class="item" href="#contact">Contact</a>
         </div>
       </div>
-    </nav>
-    <script>
-      $("#scroll a").click(function(){
-          $("html, body").animate({
-            scrollTop: $( $.attr(this, "href") ).offset().top - 90
-          }, 250);
-          $(".collapse").collapse("hide");
-          return false;
-      });
-    </script>
-    <script>
-      // Mr Doob - you are a king amongst men.
-      // http://mrdoob.com/lab/javascript/effects/solitaire/
-
-      $(function() {
-        var canvas = document.createElement("canvas");
-        var $banner = $(".banner").first();
-        $banner.append(canvas);
-
-        $(window).on("resize", function() {
-          canvas.width = $banner.width();
-          canvas.height = $banner.height();
-        });
-
-        $(window).trigger("resize");
-
-        var context = canvas.getContext("2d");
-
-        var cwidth = 100, cwidthhalf = cwidth / 2;
-        var cheight = 146, cheighthalf = cheight / 2;
-
-        var particles = [];
-
-        var Particle = function (x, y, sx, sy) {
-          if (sx === 0) sx = 2;
-          this.update = function () {
-            x += sx;
-            y += sy;
-            if (x < -cwidthhalf || x > (canvas.width + cwidthhalf)) {
-              var index = particles.indexOf( this );
-              particles.splice( index, 1 );
-              return false;
-            }
-
-            if (y > canvas.height - cheighthalf) {
-              y = canvas.height - cheighthalf;
-              sy = - sy * 0.85;
-            }
-
-            sy += 0.98;
-
-            context.drawImage(image, 0, 0, cwidth, cheight, Math.floor(x - cwidthhalf), Math.floor(y - cheighthalf), cwidth, cheight);
-
-            return true;
-          }
-        }
-
-        var image = document.createElement("img");
-        image.src = "/images/kingbarr.png";
-
-        var throwCard = function (x, y) {
-          var st = document.getElementsByTagName("body")[0].scrollTop;
-          var particle = new Particle(x, y + st, Math.floor(Math.random() * 6 - 3) * 2, - Math.random() * 16);
-          particles.push(particle);
-        }
-
-        canvas.addEventListener("mousedown", function (event) {
-          event.preventDefault();
-          canvas.addEventListener("mousemove", onMouseMove, false);
-        }, false);
-
-        canvas.addEventListener("mouseup", function (event) {
-          event.preventDefault();
-          throwCard(event.clientX, event.clientY);
-          canvas.removeEventListener("mousemove", onMouseMove, false);
-        }, false);
-
-        function onMouseMove(event) {
-          event.preventDefault();
-          throwCard(event.clientX, event.clientY);
-        }
-
-        canvas.addEventListener("touchstart", function(event) {
-          event.preventDefault();
-          for (var i = 0; i < event.changedTouches.length; i++) {
-            throwCard(event.changedTouches[0].pageX, event.changedTouches[0].pageY);
-          }
-        }, false);
-
-        canvas.addEventListener("touchmove", function (event) {
-          event.preventDefault();
-          for (var i = 0; i < event.touches.length; i++) {
-            throwCard(event.touches[i].pageX, event.touches[i].pageY);
-          }
-        }, false);
-        setInterval( function () {
-          var i = 0, l = particles.length;
-          while (i < l) {
-            particles[i].update() ? i++ : l--;
-          }
-        }, 1000 / 60);
-      });
-    </script>
-    <div class="banner"></div>
-    <div class="container-fixed">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1>Hi, I'm Finbarr</h1>
-          <p>I'm a full-stack software engineer at Y Combinator and CEO & Co-Founder of Shogun. I'm a Scottish guy living in California and one of the first results on Google for Finbarr!</p>
-          <p>Previously I've built two businesses, <a href="https://getshogun.com" title="Shogun" target="_blank">Shogun</a> (a CMS with over 300 paying customers) and a web development business I started when I was 18. I love finding creative coding solutions, and I've written code to process millions of dollars worth of orders at companies like <a href="https://getpebble.com" title="Pebble" target="_blank">Pebble</a>, <a href="https://groupon.com" title="Groupon" target="_blank">Groupon</a> and <a href="https://iamexec.com" title="Exec" target="_blank">Exec</a>.</p>
-          <p>Find me on: <a href="https://github.com/finbarr" title="Finbarr" target="_blank">Github</a> <a href="https://angel.co/finbarr" title="Finbarr" target="_blank">AngelList</a> <a href="https://stackoverflow.com/users/282706/finbarr" title="Finbarr" target="_blank">StackOverflow</a> <a href="https://twitter.com/finbarr" title="Finbarr" target="_blank">Twitter</a></p>
-          <h1 id="work">Work</h1>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/yc.png" />
-            <p>I'm a Software Engineer at <a href="https://ycombinator.com" title="Y Combinator" target="_blank">Y Combinator</a>. At YC, I write software to manage portfolio companies and scale up investing activities.</p>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/shogun.png" />
-            <p>I'm the CEO & Co-Founder of <a href="https://getshogun.com" title="Shogun" target="_blank">Shogun</a>, a CMS for existing websites. Read more on <a href="https://www.indiehackers.com/businesses/shogun" title="Shogun on Indie Hackers" target="_blank">Indie Hackers</a> and check out our top rated <a href="https://apps.shopify.com/shogun" title="Shogun Shopify App" target="_blank">Shopify App</a>.</p>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/htd.jpg" />
-            <p>Along with good friends Joel Pobar and Sandra Lennie, I won 3rd place at BMW's <a href="http://www.hackthedrive.com/" title="Hack The Drive" target="_blank">Hack The Drive</a> Hackathon in San Francisco (early 2015). We re-imagined the car speedometer for safety and created SafeSpeedo.</p>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/waffle.jpg" />
-            <p>I built <a href="https://itunes.apple.com/us/app/waffle-photo-message-collages/id914408764" title="Waffle" target="_blank">Waffle</a>, a picture messaging app for iPhone. Designed by <a href="http://karenx.com" title="Karen X. Cheng" target="_blank">Karen X. Cheng</a>, it was finished in around 3 weeks. Waffle was named one of the top startups of 500 Startups Demo Day by <a href="http://techcrunch.com/2014/07/29/our-nine-favorite-companies-from-the-500-startups-demo-day/" target="_blank">TechCrunch</a> and <a href="http://thenextweb.com/insider/2014/07/30/9-favorite-startups-500-startups-demo-day/" target="_blank">TheNextWeb</a>.</p>
-            <p><em>Technology</em>: iOS (Objective-C), Parse</p>
-            <div class="press text-right">
-              <a href="http://techcrunch.com/2014/07/29/our-nine-favorite-companies-from-the-500-startups-demo-day" target="_blank"><img class="pressbanner" src="/images/press/tc.jpg"></a>
-              <a href="http://thenextweb.com/insider/2014/07/30/9-favorite-startups-500-startups-demo-day" target="_blank"><img class="pressbanner" src="/images/press/tnw.png"></a>
-            </div>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/giveit100.jpg">
-            <p>I built <a href="http://giveit100.com" title="Giveit100" target="_blank">Giveit100</a>, a video site for people to make inspirational progress videos from their practice footage. The website has over 100,000 members with a combined 40 million video views. Giveit100 innovates in video - the videos play instantly when you hover your mouse over them. Because we have hundreds of videos per page, we tackled many performance challenges.</p>
-            <p><em>Technology</em>: Ruby on Rails, Knockout.js, Postgres, MongoDB, Redis, Heroku</p>
-            <div class="press text-right">
-              <a href="http://www.washingtonpost.com/blogs/style-blog/wp/2014/01/02/how-to-keep-your-2014-new-years-resolutions-according-to-the-woman-who-learned-to-dance-in-a-year/" target="_blank"><img class="pressbanner" src="/images/press/wpost.jpg" /></a>
-              <a href="http://abcnews.go.com/GMA/video/mother-daughter-weight-loss-journey-23639345" target="_blank"><img class="pressbanner" src="/images/press/gma.jpg" /></a>
-              <a href="http://abcnews.go.com/blogs/health/2014/01/08/woman-films-herself-through-100-days-of-workouts/" target="_blank"><img class="pressbanner" src="/images/press/abc.jpg" /></a>
-              <a href="http://www.nbcchicago.com/news/local/WATCH-Paralyzed-Chicago-Woman-Teaches-Herself-to-Walk-231923611.html" target="_blank"><img class="pressbanner" src="/images/press/nbc.jpg" /></a>
-            </div>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/pebble.jpg" />
-            <p>At <a href="https://getpebble.com" title="Pebble" target="_blank">Pebble</a>, I rewrote the system that handles all monetary transactions and created a new internal dashboard for managing orders. This system is used to process all purchases made on the site.</p>
-            <p>I also built a system to manage the pre-orders for the <a href="https://www.kickstarter.com/projects/597507018/pebble-time-awesome-smartwatch-no-compromises" title="Pebble Time Smartwatch" target="_blank">Pebble Time Smartwatch</a> - the most successful Kickstarter campaign of all time.</p>
-            <p><em>Technology</em>: Ruby on Rails, React.js, MongoDB, Redis</p>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/exec.jpg" />
-            <p>I was the senior engineer at <a href="http://iamexec.com" title="Exec" target="_blank">Exec</a>, where I developed algorithms to schedule thousands of deliveries, errands, and house cleanings. These artificial intelligence and constraint satisfaction algorithms set the schedules for hundreds of workers - giving them more stable hours while simultaneously improving utilization. These changes significantly increased Exec’s operating margin.</p>
-            <p>I mentored the dev team and taught the extended team (marketing, design, and operations) to code in Ruby. Exec was nominated for the <a href="http://techcrunch.com/2013/01/03/2012-crunchies-finalists/" title="Crunchies" target="_blank">Fastest Rising Startup at the 2012 Crunchies</a>, and sold to <a href="http://www.handy.com/" title="Handy" target="_blank">Handy</a> in early 2014.</p>
-            <p><em>Technology</em>: Ruby on Rails, Postgres, Heroku, Redis</p>
-          </div>
-          <div class="unit">
-            <img alt="Groupon" class="detail img-responsive" src="/images/groupon.jpg" />
-            <p>I worked on the orders team at <a href="http://groupon.com" title="Groupon" target="_blank">Groupon</a>, writing and maintaining infrastructure responsible for all orders placed on the Groupon website. My work on tax handling saved Groupon millions of dollars.</p>
-          </div>
-          <h1 id="projects">Projects</h1>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/awesome.jpg" />
-            <p><a href="http://awesomebabyname.com" title="Awesome Baby Name" target="_blank">Awesome Baby Name</a> is a baby name generator with an SEO twist: it finds unique names based on available domain names. My co-founder Karen and I built it in a weekend at a hackathon. In just one week, over 100,000 people had tried it. The idea came from a joke - because Karen has such a common name, she couldn’t get karencheng.com. I thought there should be a website that makes sure newborns never have this problem.</p>
-            <p>We ended up selling it on <a href="https://flippa.com/3931669-awesomebabyname-com" title="Awesome Baby Name on Flippa" target="_blank">Flippa</a> for $1600!</p>
-            <p><em>Technology</em>: Ruby on Rails, Knockout.js, DNS</p>
-            <div class="press text-right">
-              <a href="http://www.huffingtonpost.com/2014/08/06/baby-names-based-on-available-domain_n_5655733.html" target="_blank"><img class="pressbanner" src="/images/press/huffpo.jpg" /></a>
-              <a href="http://www.buzzfeed.com/annmariealcantara/theres-a-website-that-will-name-your-baby-for-you" target="_blank"><img class="pressbanner" src="/images/press/buzzfeed.jpg" /></a>
-              <a href="http://www.businessinsider.com/parents-choose-baby-names-based-on-domains-2014-8" target="_blank"><img class="pressbanner" src="/images/press/businessinsider.jpg" /></a>
-            </div>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/nathan.jpg" />
-            <p>I built the official website to showcase the work <a href="http://www.studionathancoley.com" title="Nathan Coley" target="_blank">Nathan Coley</a>, an award-winning artist whose work has been featured internationally. For its complex animations, this site makes heavy use of ajax for seamless page transitions, supporting forward and back navigation through the HTML5 history API.</p>
-            <p><em>Technology</em>: Drupal 7, jQuery</p>
-          </div>
-          <div class="unit">
-            <img class="detail img-responsive" src="/images/uptilt.jpg" />
-            <p><a href="http://upti.lt" title="Uptilt" target="_blank">Uptilt</a> is an online multiplayer card game. I built the game in 48 hours with two friends (Gary Rennie and Oliver Cannings) as an entry into the 2012 Rails Rumble competition. My own contributions were in the backend of the game - I wrote most of the logic for managing the state of the game itself and I built the achievements engine. This project was a lot of fun and was a real eye-opener for what can be achieved in the space of a weekend. Read more on the <a href="http://uptiltgame.tumblr.com/" title="Uptilt Blog" target="_blank">Uptilt blog</a>.</p>
-            <p><em>Technology</em>: Ruby on Rails, Pusher, Redis, Postgres, Backbone.js</p>
-          </div>
-          <h1 id="contact">Contact</h1>
-          <div class="unit">
-            <p>
-              <strong>Say Hi:</strong>
-              <br>
-              <a href="https://twitter.com/finbarr" title="Finbarr" target="_blank">Twitter</a>
-              <br>
-              <a href="https://linkedin.com/in/finbarrtaylor" title="Finbarr" target="_blank">LinkedIn</a>
-              <br>
-              <span>Email: finbarrtaylor (at) gmail (dot) com</span>
-            </p>
-            <p>
-              <strong>Find me on:</strong>
-              <br>
-              <a href="https://github.com/finbarr" title="Finbarr" target="_blank">Github</a>
-              <br>
-              <a href="https://angel.co/finbarr" title="Finbarr" target="_blank">AngelList</a>
-              <br>
-              <a href="https://stackoverflow.com/users/282706/finbarr" title="Finbarr" target="_blank">StackOverflow</a>
-            </p>
-          </div>
+      <div class="ui segment basic padded">
+        <img src="images/fyc-square-small.jpg" alt="Finbarr Taylor" class="ui small left floated circular image" />
+        <h1 class="ui header">Hi, I'm Finbarr</h1>
+        <p>I'm a software engineer at Y Combinator and CEO & Co-Founder of Shogun. I'm a Scottish guy living in California and one of the first results on Google for Finbarr!</p>
+        <p>Previously I've built two businesses, <a href="https://getshogun.com" title="Shogun" target="_blank">Shogun</a> (a CMS with over 600 paying customers) and a web development business I started when I was 18. I love finding creative coding solutions, and I've written code to process millions of dollars worth of orders at companies like <a href="https://getpebble.com" title="Pebble" target="_blank">Pebble</a>, <a href="https://groupon.com" title="Groupon" target="_blank">Groupon</a> and <a href="https://iamexec.com" title="Exec" target="_blank">Exec</a>.</p>
+        <p>Find me on: <a href="https://github.com/finbarr" title="Finbarr" target="_blank">Github</a> <a href="https://angel.co/finbarr" title="Finbarr" target="_blank">AngelList</a> <a href="https://stackoverflow.com/users/282706/finbarr" title="Finbarr" target="_blank">StackOverflow</a> <a href="https://twitter.com/finbarr" title="Finbarr" target="_blank">Twitter</a></p>
+      </div>
+      <h1 id="work" class="ui header horizontal divider">Work</h1>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/yc.png" />
+        <p>I'm a Software Engineer at <a href="https://ycombinator.com" title="Y Combinator" target="_blank">Y Combinator</a>. At YC, I write software to manage portfolio companies and scale up investing activities.</p>
+        <p>I wrote a blog post about my work on <a href="https://blog.ycombinator.com/investor-day-software/" title="YC Investor Day" target="_blank">Investor Day.</a></p>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/shogun.png" />
+        <p>I'm the CEO & Co-Founder of <a href="https://getshogun.com" title="Shogun" target="_blank">Shogun</a>, a CMS for existing websites. Read more on <a href="https://www.indiehackers.com/businesses/shogun" title="Shogun on Indie Hackers" target="_blank">Indie Hackers</a> and check out our top rated <a href="https://apps.shopify.com/shogun" title="Shogun Shopify App" target="_blank">Shopify App</a>.</p>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/htd.jpg" />
+        <p>Along with good friends Joel Pobar and Sandra Lennie, I won 3rd place at BMW's <a href="http://www.hackthedrive.com/" title="Hack The Drive" target="_blank">Hack The Drive</a> Hackathon in San Francisco (early 2015). We re-imagined the car speedometer for safety and created SafeSpeedo.</p>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/waffle.jpg" />
+        <p>I built <a href="https://itunes.apple.com/us/app/waffle-photo-message-collages/id914408764" title="Waffle" target="_blank">Waffle</a>, a picture messaging app for iPhone. Designed by <a href="http://karenx.com" title="Karen X. Cheng" target="_blank">Karen X. Cheng</a>, it was finished in around 3 weeks. Waffle was named one of the top startups of 500 Startups Demo Day by <a href="http://techcrunch.com/2014/07/29/our-nine-favorite-companies-from-the-500-startups-demo-day/" target="_blank">TechCrunch</a> and <a href="http://thenextweb.com/insider/2014/07/30/9-favorite-startups-500-startups-demo-day/" target="_blank">TheNextWeb</a>.</p>
+        <p><em>Technology</em>: iOS (Objective-C), Parse</p>
+        <div class="press text-right">
+          <a href="http://techcrunch.com/2014/07/29/our-nine-favorite-companies-from-the-500-startups-demo-day" target="_blank"><img class="pressbanner" src="images/press/tc.jpg"></a>
+          <a href="http://thenextweb.com/insider/2014/07/30/9-favorite-startups-500-startups-demo-day" target="_blank"><img class="pressbanner" src="images/press/tnw.png"></a>
         </div>
       </div>
-    </div>
-    <div class="autocrop">
-      <img src="/images/banner.jpg" />
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/giveit100.jpg">
+        <p>I built <a href="http://giveit100.com" title="Giveit100" target="_blank">Giveit100</a>, a video site for people to make inspirational progress videos from their practice footage. The website has over 100,000 members with a combined 40 million video views. Giveit100 innovates in video - the videos play instantly when you hover your mouse over them. Because we have hundreds of videos per page, we tackled many performance challenges.</p>
+        <p><em>Technology</em>: Ruby on Rails, Knockout.js, Postgres, MongoDB, Redis, Heroku</p>
+        <div class="press text-right">
+          <a href="http://www.washingtonpost.com/blogs/style-blog/wp/2014/01/02/how-to-keep-your-2014-new-years-resolutions-according-to-the-woman-who-learned-to-dance-in-a-year/" target="_blank"><img class="pressbanner" src="images/press/wpost.jpg" /></a>
+          <a href="http://abcnews.go.com/GMA/video/mother-daughter-weight-loss-journey-23639345" target="_blank"><img class="pressbanner" src="images/press/gma.jpg" /></a>
+          <a href="http://abcnews.go.com/blogs/health/2014/01/08/woman-films-herself-through-100-days-of-workouts/" target="_blank"><img class="pressbanner" src="images/press/abc.jpg" /></a>
+          <a href="http://www.nbcchicago.com/news/local/WATCH-Paralyzed-Chicago-Woman-Teaches-Herself-to-Walk-231923611.html" target="_blank"><img class="pressbanner" src="images/press/nbc.jpg" /></a>
+        </div>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/pebble.jpg" />
+        <p>At <a href="https://getpebble.com" title="Pebble" target="_blank">Pebble</a>, I rewrote the system that handles all monetary transactions and created a new internal dashboard for managing orders. This system is used to process all purchases made on the site.</p>
+        <p>I also built a system to manage the pre-orders for the <a href="https://www.kickstarter.com/projects/597507018/pebble-time-awesome-smartwatch-no-compromises" title="Pebble Time Smartwatch" target="_blank">Pebble Time Smartwatch</a> - the most successful Kickstarter campaign of all time.</p>
+        <p><em>Technology</em>: Ruby on Rails, React.js, MongoDB, Redis</p>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/exec.jpg" />
+        <p>I was the senior engineer at <a href="http://iamexec.com" title="Exec" target="_blank">Exec</a>, where I developed algorithms to schedule thousands of deliveries, errands, and house cleanings. These artificial intelligence and constraint satisfaction algorithms set the schedules for hundreds of workers - giving them more stable hours while simultaneously improving utilization. These changes significantly increased Exec’s operating margin.</p>
+        <p>I mentored the dev team and taught the extended team (marketing, design, and operations) to code in Ruby. Exec was nominated for the <a href="http://techcrunch.com/2013/01/03/2012-crunchies-finalists/" title="Crunchies" target="_blank">Fastest Rising Startup at the 2012 Crunchies</a>, and sold to <a href="http://www.handy.com/" title="Handy" target="_blank">Handy</a> in early 2014.</p>
+        <p><em>Technology</em>: Ruby on Rails, Postgres, Heroku, Redis</p>
+      </div>
+      <div class="ui segment basic padded">
+        <img alt="Groupon" class="ui header image responsive" src="images/groupon.jpg" />
+        <p>I worked on the orders team at <a href="http://groupon.com" title="Groupon" target="_blank">Groupon</a>, writing and maintaining infrastructure responsible for all orders placed on the Groupon website. My work on tax handling saved Groupon millions of dollars.</p>
+      </div>
+      <h1 id="projects" class="ui header horizontal divider">Projects</h1>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/awesome.jpg" />
+        <p><a href="http://awesomebabyname.com" title="Awesome Baby Name" target="_blank">Awesome Baby Name</a> is a baby name generator with an SEO twist: it finds unique names based on available domain names. My co-founder Karen and I built it in a weekend at a hackathon. In just one week, over 100,000 people had tried it. The idea came from a joke - because Karen has such a common name, she couldn’t get karencheng.com. I thought there should be a website that makes sure newborns never have this problem.</p>
+        <p>We ended up selling it on <a href="https://flippa.com/3931669-awesomebabyname-com" title="Awesome Baby Name on Flippa" target="_blank">Flippa</a> for $1600!</p>
+        <p><em>Technology</em>: Ruby on Rails, Knockout.js, DNS</p>
+        <div class="press text-right">
+          <a href="http://www.huffingtonpost.com/2014/08/06/baby-names-based-on-available-domain_n_5655733.html" target="_blank"><img class="pressbanner" src="images/press/huffpo.jpg" /></a>
+          <a href="http://www.buzzfeed.com/annmariealcantara/theres-a-website-that-will-name-your-baby-for-you" target="_blank"><img class="pressbanner" src="images/press/buzzfeed.jpg" /></a>
+          <a href="http://www.businessinsider.com/parents-choose-baby-names-based-on-domains-2014-8" target="_blank"><img class="pressbanner" src="images/press/businessinsider.jpg" /></a>
+        </div>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/nathan.jpg" />
+        <p>I built the official website to showcase the work <a href="http://www.studionathancoley.com" title="Nathan Coley" target="_blank">Nathan Coley</a>, an award-winning artist whose work has been featured internationally. For its complex animations, this site makes heavy use of ajax for seamless page transitions, supporting forward and back navigation through the HTML5 history API.</p>
+        <p><em>Technology</em>: Drupal 7, jQuery</p>
+      </div>
+      <div class="ui segment basic padded">
+        <img class="ui header image responsive" src="images/uptilt.jpg" />
+        <p><a href="http://upti.lt" title="Uptilt" target="_blank">Uptilt</a> is an online multiplayer card game. I built the game in 48 hours with two friends (Gary Rennie and Oliver Cannings) as an entry into the 2012 Rails Rumble competition. My own contributions were in the backend of the game - I wrote most of the logic for managing the state of the game itself and I built the achievements engine. This project was a lot of fun and was a real eye-opener for what can be achieved in the space of a weekend. Read more on the <a href="http://uptiltgame.tumblr.com/" title="Uptilt Blog" target="_blank">Uptilt blog</a>.</p>
+        <p><em>Technology</em>: Ruby on Rails, Pusher, Redis, Postgres, Backbone.js</p>
+      </div>
+      <h1 id="contact" class="ui header horizontal divider">Contact</h1>
+      <div class="ui segment basic padded">
+        <p>
+          <strong>Say Hi:</strong>
+          <br>
+          <a href="https://twitter.com/finbarr" title="Finbarr" target="_blank">Twitter</a>
+          <br>
+          <a href="https://linkedin.com/in/finbarrtaylor" title="Finbarr" target="_blank">LinkedIn</a>
+          <br>
+          <span>Email: finbarrtaylor (at) gmail (dot) com</span>
+        </p>
+        <p>
+          <strong>Find me on:</strong>
+          <br>
+          <a href="https://github.com/finbarr" title="Finbarr" target="_blank">Github</a>
+          <br>
+          <a href="https://angel.co/finbarr" title="Finbarr" target="_blank">AngelList</a>
+          <br>
+          <a href="https://stackoverflow.com/users/282706/finbarr" title="Finbarr" target="_blank">StackOverflow</a>
+        </p>
+      </div>
     </div>
   </body>
 </html>
